@@ -51,18 +51,39 @@ const Playzone = ({lang, setThemeMusic, preview}) => {
                         }}
                     />
                 </div>
-                <button
-                    className={'font-bold tracking-wider text-xl border-black border-2 rounded-lg w-3/6 py-2 cursor-pointer'}
-                    onClick={() => {
-                        setIsStarted(true)
-                        setIsActive(true)
-                    }}
-                >
-                    {lang === 'eng' ? 'Start' : 'Старт'}
-                </button>
-                <div className={'text-3xl font-bold tracking-wide'}>
-                    <Stopwatch startTime={0} setTimer={time => setTimer(time)} isActive={isActive}/>
-                </div>
+                    {isStarted
+                    ?
+                            <button className={'w-1/4 py-2 border-black border-2 rounded-lg text-red-700 font-bold text-xl'}
+                                    onClick={() => {
+                                        setIsStarted(false)
+                                        setIsActive(false)
+                                        setTimer(0)
+
+                                    }
+                            }
+                            >
+                                X
+                            </button>
+                    :
+                        <button
+                            className={'font-bold tracking-wider text-xl border-black border-2 mr-1 w-1/2 rounded-lg py-2 cursor-pointer'}
+                            onClick={() => {
+                                setIsStarted(true)
+                                setIsActive(true)
+                            }}
+                        >
+                            {lang === 'eng' ? 'Start' : 'Старт'}
+                        </button>
+                    }
+                {isStarted
+                ?
+                    <div className={'text-3xl font-bold tracking-wide'}>
+                        <Stopwatch startTime={0} setTimer={time => setTimer(time)} isActive={isActive}/>
+                    </div>
+                    :
+                    <span className={'text-3xl font-bold tracking-wide'}>00:00:00</span>
+                }
+
             </div>
             <div className={'w-full h-full'}>
                 {isStarted && !done &&

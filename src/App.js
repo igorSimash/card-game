@@ -18,7 +18,6 @@ function App() {
     localStorage.setItem('sound', '' + soundIsOn)
     localStorage.setItem('preview', '' + preview)
 
-
     return (
         <div className="App h-full w-full">
             {soundIsOn &&

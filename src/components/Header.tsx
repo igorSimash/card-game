@@ -25,7 +25,8 @@ const Header = ({lang, setLang, setSoundIsOn, setPreview}) => {
                 {lang === 'eng' ? 'Language' : 'Мова'}
             </span>
                 <select
-                    className={'border-2 border-black rounded-md ml-3'}
+                    className={'border-2 border-black rounded-md ml-3 py-0.5 pl-1' +
+                        ''}
                     onChange={(e) => setLang(e.target.value)}
                     value={lang}
                 >

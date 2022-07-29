@@ -6,9 +6,11 @@ import Timer from './Timer.tsx'
 const Stopwatch = ({isActive, setTimer, startTime}) => {
 
     const [time, setTime] = useState(startTime);
+
     if(isActive === false) {
         setTimer(time)
     }
+
     useEffect(() => {
         let interval = null;
         if (isActive) {

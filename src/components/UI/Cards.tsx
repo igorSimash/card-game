@@ -15,7 +15,6 @@ const Cards = ({size, theme, setDone, setIsActive, preview}) => {
         const iconsAfterSort = IconObject[theme].sort(() => Math.random() - 0.5).slice(0, size / 2);
         let i = -size
         iconsAfterSort.map((icon, index) => {
-            const obj = 12
             setIconsArr(arr => [...arr,
                 {
                     icon,
