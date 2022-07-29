@@ -5,3 +5,7 @@
 .App {
     font-family: sans-serif;
 }
+
+.card {
+    transform: rotateY(180deg);
+}

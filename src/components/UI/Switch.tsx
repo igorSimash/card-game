@@ -1,8 +1,15 @@
 // @ts-ignore
 import React, {useState} from 'react';
 
-const Switch = ({setLang}) => {
-    const [toggle, setToggle] = useState(true);
+const Switch = ({acting, act}) => {
+    const [toggle, setToggle] = useState(
+        act === 'sound'
+        ?
+            localStorage.getItem('sound') ? !(localStorage.getItem('sound') === 'true') : true
+        :
+            localStorage.getItem('preview') ? !(localStorage.getItem('preview') === 'true') : true
+        )
+
     const toggleClass = " transform translate-x-5";
     return (
         <div className="flex">
@@ -10,6 +17,7 @@ const Switch = ({setLang}) => {
                 className="md:w-14 md:h-7 w-12 h-6 flex items-center bg-gray-300 rounded-full p-1 cursor-pointer ml-3"
                 onClick={() => {
                     setToggle(!toggle);
+                    acting()
                 }}
             >
                 <div
