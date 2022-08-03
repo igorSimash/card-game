@@ -20,12 +20,12 @@ const Playzone = ({lang, setThemeMusic, preview}) => {
 
 
     return (
-        <div className={`flex h-playzone bg-gradient-to-b
+        <div className={`flex h-playzone bg-gradient-to-b s:flex-col-reverse
             ${theme === 'nature' ? ' from-green-200 to-green-300' : theme === 'sport'
             ? 'from-red-300 to-violet-400' : 'from-amber-200 to-lime-300'}`}>
-            <div className={'border-r-2 border-black w-1/3 flex flex-col justify-around items-center'}>
+            <div className={'border-r-2 s:px-2 s:border-r-0 s:border-t-2 s:mb-7 s:pt-7 border-black w-1/3 s:w-full flex flex-col s:flex-row justify-around items-center'}>
                 <div className={'grid text-center w-full '}>
-                    <span className={'font-bold tracking-wider text-xl'}>
+                    <span className={'font-bold tracking-wider text-xl s:text-lg'}>
                         {lang === 'eng' ? 'Theme' : 'Тема'}
                     </span>
                     <Select
@@ -36,10 +36,11 @@ const Playzone = ({lang, setThemeMusic, preview}) => {
                             setTheme(e.target.value)
                             setThemeMusic(e)
                         }}
+                        disabled={isStarted}
                     />
                 </div>
                 <div className={'grid text-center w-full'}>
-                    <span className={'font-bold tracking-wider text-xl'}>
+                    <span className={'font-bold tracking-wider text-xl s:text-lg'}>
                         {lang === 'eng' ? 'Size' : 'Розмір'}
                     </span>
                     <Select
@@ -49,11 +50,12 @@ const Playzone = ({lang, setThemeMusic, preview}) => {
                         onChange={(e) => {
                             setSize(e.target.value)
                         }}
+                        disabled={isStarted}
                     />
                 </div>
                     {isStarted
                     ?
-                            <button className={'w-1/4 py-2 border-black border-2 rounded-lg text-red-700 font-bold text-xl'}
+                            <button className={'w-1/4 py-2 border-black border-2 rounded-lg text-red-700 mr-2 s:w-3/5 font-bold text-xl'}
                                     onClick={() => {
                                         setIsStarted(false)
                                         setIsActive(false)
@@ -66,7 +68,7 @@ const Playzone = ({lang, setThemeMusic, preview}) => {
                             </button>
                     :
                         <button
-                            className={'font-bold tracking-wider text-xl border-black border-2 mr-1 w-1/2 rounded-lg py-2 cursor-pointer'}
+                            className={'font-bold s:w-3/5 s:text-md tracking-wider text-xl border-black border-2 w-1/2 mr-2 md:w-4/6 sm:w-4/5 rounded-lg py-2 cursor-pointer'}
                             onClick={() => {
                                 setIsStarted(true)
                                 setIsActive(true)
@@ -77,11 +79,11 @@ const Playzone = ({lang, setThemeMusic, preview}) => {
                     }
                 {isStarted
                 ?
-                    <div className={'text-3xl font-bold tracking-wide'}>
+                    <div className={'text-3xl font-bold tracking-wide s:text-xl underline'}>
                         <Stopwatch startTime={0} setTimer={time => setTimer(time)} isActive={isActive}/>
                     </div>
                     :
-                    <span className={'text-3xl font-bold tracking-wide'}>00:00:00</span>
+                    <span className={'text-3xl font-bold tracking-wide s:text-xl underline'}>00:00:00</span>
                 }
 
             </div>
@@ -92,7 +94,7 @@ const Playzone = ({lang, setThemeMusic, preview}) => {
                                setDone={isDone => setDone(isDone)} size={cardCount} theme={theme}/>
                     </div>
                 }
-                {done &&
+                {isStarted && done &&
                     <div className={'h-full text-5xl w-full flex flex-col justify-center items-center'}>
                         <span className={'mb-3'}>You win!</span>
                         <Timer time={timer} />

@@ -14,7 +14,7 @@ const Switch = ({acting, act}) => {
     return (
         <div className="flex">
             <div
-                className="md:w-14 md:h-7 w-12 h-6 flex items-center bg-gray-300 rounded-full p-1 cursor-pointer ml-3"
+                className="md:w-14 md:h-7 w-12 h-6 flex items-center bg-gray-300 rounded-full p-1 cursor-pointer ml-3 s:mx-auto"
                 onClick={() => {
                     setToggle(!toggle);
                     acting()

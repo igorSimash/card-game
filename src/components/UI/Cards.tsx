@@ -103,7 +103,7 @@ const Cards = ({size, theme, setDone, setIsActive, preview}) => {
     }
 
     return (
-        <div className={`mx-auto h-fit grid gap-y-2 gap-x-2 w-fit 
+        <div className={`mx-auto h-fit grid gap-y-2 gap-x-2 w-fit
                     ${size === 16 ? 'grid-cols-4' : size === 36 ? 'grid-cols-6' : 'grid-cols-8'}`}>
             {iconsArr.map(obj =>
                 <Card chooseCard={() => chooseCard(obj.index, obj.id, obj)} size={size} icon={obj.icon}
